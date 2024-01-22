@@ -22,13 +22,16 @@ const userNavigation = [
 const Header = () => {
   const [title, setTitle] = useState('👋 Getting Started on Eraser')
   return (
-    <Disclosure as="nav" className="border-b border-zinc-200 bg-white">
+    <Disclosure
+      as="nav"
+      className="border-b border-[--sand-6] bg-[--white-a12]"
+    >
       {({ open }) => (
         <>
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="h-14 grid grid-cols-[minmax(200px,1fr)_auto_1fr]">
               <div className="flex items-center gap-x-4">
-                <a href="/" className="flex shrink-0 items-center">
+                <a href="/public" className="flex shrink-0 items-center">
                   <svg
                     className="h-5 text-black"
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,8 +76,8 @@ const Header = () => {
                       href={item.href}
                       className={cn(
                         item.current
-                          ? 'border-indigo-500 text-zinc-900'
-                          : 'border-transparent text-zinc-500 hover:border-zinc-300 hover:text-zinc-700',
+                          ? 'border-[--purple-9] text-[--sand-12]'
+                          : 'border-transparent text-[--sand-10] hover:border-[--sand-8] hover:text-[--sand-11]',
                         'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
                       )}
                       aria-current={item.current ? 'page' : undefined}
@@ -87,7 +90,7 @@ const Header = () => {
               <div className="hidden sm:flex sm:items-center sm:justify-end">
                 <button
                   type="button"
-                  className="relative rounded-full bg-white p-1 text-zinc-400 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="relative rounded-full bg-white p-1 text-zinc-400 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-[--purple-9] focus:ring-offset-2"
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
@@ -97,7 +100,7 @@ const Header = () => {
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
-                    <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <Menu.Button className="relative flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[--purple-9] focus:ring-offset-2">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <img
@@ -138,7 +141,7 @@ const Header = () => {
               </div>
               <div className="-mr-2 flex items-center sm:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-white p-2 text-zinc-400 hover:bg-zinc-100 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -189,7 +192,7 @@ const Header = () => {
                 </div>
                 <button
                   type="button"
-                  className="relative ml-auto shrink-0 rounded-full bg-white p-1 text-zinc-400 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  className="relative ml-auto shrink-0 rounded-full bg-white p-1 text-zinc-400 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2"
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
