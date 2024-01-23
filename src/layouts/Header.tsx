@@ -66,9 +66,9 @@ const Header = () => {
                       href={item.href}
                       className={cn(
                         item.current
-                          ? 'border-[--purple-9] text-[--sand-12]'
-                          : 'border-transparent text-[--sand-10] hover:border-[--sand-8] hover:text-[--sand-11]',
-                        'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium'
+                          ? 'border-[--purple-9]'
+                          : 'border-transparent text-grey-10 hover:border-grey-8 hover:text-grey-11',
+                        'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-semibold'
                       )}
                       aria-current={item.current ? 'page' : undefined}
                     >
