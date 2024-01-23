@@ -1,24 +1,24 @@
-import React from 'react'
 import {
-  Bars4Icon,
-  CalendarIcon,
-  ClockIcon,
-  PhotoIcon,
-  TableCellsIcon,
-  ViewColumnsIcon,
   DocumentIcon,
   VideoCameraIcon,
   GlobeAltIcon,
 } from '@heroicons/react/24/outline'
 import { cn } from '@/lib/utils.ts'
+import { Button, buttonVariants } from '@/components/ui/button'
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card.tsx'
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
+import { CopyIcon, Link2Icon } from '@radix-ui/react-icons'
+import { Input } from '@/components/ui/input.tsx'
+import { Label } from '@/components/ui/label.tsx'
 
 export type EmptyWhiteboardStateProps = {}
 
@@ -45,62 +45,52 @@ const items = [
 
 const EmptyWhiteboardState = ({}: EmptyWhiteboardStateProps) => {
   return (
-    <Card className="mx-auto max-w-md">
-      <CardHeader>
-        <CardTitle className="text-base font-semibold leading-6">
-          Welcome
-        </CardTitle>
-        <CardDescription className="mt-1 text-sm text-[--sand-11]">
-          You haven’t created a project yet. Get started by selecting a template
-          or start from an empty project.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <ul role="list" className="grid grid-cols-1 gap-6 border-y py-6">
-          {items.map((item, itemIdx) => (
-            <li key={itemIdx} className="flow-root">
-              <div className="relative -m-2 flex items-center space-x-4 rounded-xl p-2 focus-within:ring-2 focus-within:ring-[--purple-9] hover:bg-[--sand-2]">
-                <div
-                  className={cn(
-                    item.background,
-                    'flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg'
-                  )}
-                >
-                  <item.icon
-                    className="size-6 text-[--white-a12]"
-                    aria-hidden="true"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-[--sand-12]">
-                    <a
-                      href="#"
-                      className="focus:outline-none whitespace-nowrap"
-                    >
-                      <span className="absolute inset-0" aria-hidden="true" />
-                      <span>{item.title}</span>
-                      <span aria-hidden="true"> &rarr;</span>
-                    </a>
-                  </h3>
-                  <p className="mt-1 text-sm text-[--sand-11]">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-      <CardFooter className="flex">
-        <a
-          href="#"
-          className="text-sm font-medium text-[--purple-11] hover:text-[--purple-9]"
+    <Dialog>
+      <p className="">
+        Draw, Diagram, start from a{' '}
+        <DialogTrigger
+          className={cn('hover:underline font-medium text-[--purple-9]')}
         >
-          Or start from an empty project
-          <span aria-hidden="true"> &rarr;</span>
-        </a>
-      </CardFooter>
-    </Card>
+          template,
+        </DialogTrigger>{' '}
+        or make an{' '}
+        <span className="text-[--purple-9] font-medium hover:underline">
+          AI Diagram
+        </span>
+      </p>
+      <DialogContent className="sm:max-w-md">
+        <DialogHeader>
+          <DialogTitle>Import a video</DialogTitle>
+          <DialogDescription>
+            Anyone who has this link will be able to view this.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="flex items-center space-x-2">
+          <div className="grid flex-1 gap-2">
+            <Label htmlFor="link" className="sr-only">
+              Link
+            </Label>
+            <Input
+              id="link"
+              defaultValue="https://ui.shadcn.com/docs/installation"
+              readOnly
+            />
+          </div>
+          <Button type="submit" size="sm" className="px-3">
+            <span className="sr-only">Copy</span>
+            <Link2Icon className="size-4" />
+          </Button>
+        </div>
+        <DialogFooter className="sm:justify-start">
+          <DialogClose asChild>
+            <Button type="button" variant="secondary">
+              Close
+            </Button>
+          </DialogClose>
+          <Button>Select a file</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
 
