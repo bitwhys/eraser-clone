@@ -25,7 +25,7 @@ function App() {
           defaultSize={420}
           split="vertical"
           className="relative grid grow grid-cols-[1fr_2fr]"
-          resizerClassName="w-[11px] border-l-4 border-transparent hover:border-[--purple-9]  active:border-[--purple-9] cursor-col-resize"
+          resizerClassName="w-[11px] border-l-4 border-transparent hover:border-primary-9  active:border-primary-9 cursor-col-resize"
           // onDragStarted={handleDragStarted}
           // onDragFinished={handleDragFinished}
           // onDrag={handleDrag}

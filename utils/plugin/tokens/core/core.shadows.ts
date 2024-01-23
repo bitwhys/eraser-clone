@@ -23,6 +23,6 @@ export const CORE_SHADOWS = {
 
   'shadow-6': `0 0 0 1px var(--grey-a3),
      0 12px 60px var(--black-a3),
-     0 16px 64px var(--gray-a2),
-     0 16px 36px -20px var(--gray-a7)`,
+     0 16px 64px var(--grey-a2),
+     0 16px 36px -20px var(--grey-a7)`,
 }

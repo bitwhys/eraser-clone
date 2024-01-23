@@ -6,18 +6,25 @@ import { CONFIG_RADIUS } from './tokens/config/config.radius.ts'
 import { CONFIG_FONTS } from './tokens/config/config.fonts.ts'
 import { CONFIG_KEYFRAMES } from './tokens/config/config.keyframes.ts'
 import { CONFIG_ANIMATIONS } from './tokens/config/config.animations.ts'
-import { format, getRadixColors } from './utils.ts'
+import {
+  format,
+  getRadixColors,
+  GreyScale,
+  RADIX_COLOR_LABELS,
+} from './utils.ts'
 import { CORE_SHADOWS } from './tokens/core/core.shadows.ts'
+import { CORE_COLORS } from './tokens/core/core.colors.ts'
+import { CORE_RADIUS } from './tokens/core/core.radius.ts'
 
 export type PluginOptions = {
   /*
    * Grey is a neutral color and is the foundation of the color core.
    * Almost everything in UI design — text, form fields, backgrounds, dividers — are usually gray. */
-  grey?: 'gray' | 'slate' | 'mauve' | 'sage' | 'olive' | 'sand'
+  grey?: GreyScale
   /*
    * The primary color is your "brand" color, and is used across all interactive elements such as buttons,
    * links, inputs, etc. This color can define the overall feel and can elicit emotion. */
-  primary?: string
+  primary?: (typeof RADIX_COLOR_LABELS)[number]
   radius?: 'none' | 'small' | 'medium' | 'large' | 'full'
   scaling?: 0.9 | 0.95 | 1 | 1.05 | 1.1
   prefix?: string
@@ -32,11 +39,17 @@ type PluginWithOptionsThemeCreator = (
   options: PluginOptions
 ) => Parameters<typeof plugin>[1]
 const pluginCreator: PluginWithOptionsCreator = (options) => {
-  const { scaling = 1, radius = 'medium', grey = 'sand' } = options
+  const {
+    scaling = 1,
+    radius = 'medium',
+    grey = 'sand',
+    primary = 'purple',
+  } = options
   let radiusFactor: string
   let radiusFull: string
 
-  const { light, alpha } = getRadixColors(grey)
+  const { light: greyBase, alpha: greyAlpha } = getRadixColors(grey)
+  const { light: primaryBase, alpha: primaryAlpha } = getRadixColors(primary)
 
   switch (radius) {
     case 'none':
@@ -63,6 +76,7 @@ const pluginCreator: PluginWithOptionsCreator = (options) => {
       radiusFactor = '1'
       radiusFull = '0px'
   }
+
   return ({ addBase }) => {
     addBase([
       {
@@ -70,10 +84,14 @@ const pluginCreator: PluginWithOptionsCreator = (options) => {
           '--scaling': `${scaling}`,
           '--radius-factor': `${radiusFactor}`,
           '--radius-full': `${radiusFull}`,
-          ...mapKeys(CORE_TOKENS, (_, k) => `--${k}`),
-          ...mapKeys(CORE_SHADOWS, (_, k) => `--${k}`),
-          ...mapKeys(light, (_, k) => `--grey-${format(k)}`),
-          ...mapKeys(alpha, (_, k) => `--grey-a${format(k)}`),
+          ...mapKeys(
+            { ...CORE_TOKENS, ...CORE_SHADOWS, ...CORE_COLORS, ...CORE_RADIUS },
+            (_, k) => `--${k}`
+          ),
+          ...mapKeys(greyBase, (_, k) => `--grey-${format(k)}`),
+          ...mapKeys(greyAlpha, (_, k) => `--grey-a${format(k)}`),
+          ...mapKeys(primaryBase, (_, k) => `--primary-${format(k)}`),
+          ...mapKeys(primaryAlpha, (_, k) => `--primary-a${format(k)}`),
         },
         '*': {
           borderColor: 'theme(colors.border)',

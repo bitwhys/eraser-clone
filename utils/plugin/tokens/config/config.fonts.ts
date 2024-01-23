@@ -1,10 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 export const CONFIG_FONTS = {
   sans: [
-    'Plus Jakarta Sans Variable',
-    'Plus Jakarta Sans',
-    'Inter',
-    'Inter Variable',
+    'var(--font-sans,"Plus Jakarta Sans Variable")',
     ...defaultTheme.fontFamily.sans,
   ],
 }

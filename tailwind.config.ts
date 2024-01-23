@@ -6,11 +6,19 @@ export default {
   darkMode: ['class'],
   content: ['index.html', './src/**/*.{ts,tsx}'],
   prefix: '',
-  theme: {},
+  theme: {
+    extend: {
+      colors: {
+        canvas: 'var(--grey-2)',
+      },
+    },
+  },
   plugins: [
     tailwindcssAnimate,
     defineTheme({
       radius: 'large',
+      grey: 'sand',
+      primary: 'orange',
     }),
   ],
 } satisfies Config
