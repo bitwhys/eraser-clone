@@ -6,6 +6,8 @@ import { CONFIG_RADIUS } from './tokens/config/config.radius.ts'
 import { CONFIG_FONTS } from './tokens/config/config.fonts.ts'
 import { CONFIG_KEYFRAMES } from './tokens/config/config.keyframes.ts'
 import { CONFIG_ANIMATIONS } from './tokens/config/config.animations.ts'
+import { format, getRadixColors } from './utils.ts'
+import { CORE_SHADOWS } from './tokens/core/core.shadows.ts'
 
 export type PluginOptions = {
   /*
@@ -30,9 +32,11 @@ type PluginWithOptionsThemeCreator = (
   options: PluginOptions
 ) => Parameters<typeof plugin>[1]
 const pluginCreator: PluginWithOptionsCreator = (options) => {
-  const { scaling = 1, radius = 'medium' } = options
+  const { scaling = 1, radius = 'medium', grey = 'sand' } = options
   let radiusFactor: string
   let radiusFull: string
+
+  const { light, alpha } = getRadixColors(grey)
 
   switch (radius) {
     case 'none':
@@ -67,6 +71,9 @@ const pluginCreator: PluginWithOptionsCreator = (options) => {
           '--radius-factor': `${radiusFactor}`,
           '--radius-full': `${radiusFull}`,
           ...mapKeys(CORE_VARIABLES, (_, k) => `--${k}`),
+          ...mapKeys(CORE_SHADOWS, (_, k) => `--${k}`),
+          ...mapKeys(light, (_, k) => `--grey-${format(k)}`),
+          ...mapKeys(alpha, (_, k) => `--grey-a${format(k)}`),
         },
         '*': {
           borderColor: 'theme(colors.border)',
@@ -99,6 +106,15 @@ const themeCreator: PluginWithOptionsThemeCreator = (options) => {
         fontFamily: CONFIG_FONTS,
         keyframes: CONFIG_KEYFRAMES,
         animation: CONFIG_ANIMATIONS,
+        boxShadow: {
+          DEFAULT: 'var(--shadow-2)',
+          sm: 'var(--shadow-1)',
+          md: 'var(--shadow-2)',
+          lg: 'var(--shadow-3)',
+          xl: 'var(--shadow-4)',
+          '2xl': 'var(--shadow-5)',
+          '3xl': 'var(--shadow-6)',
+        },
       },
     },
   }

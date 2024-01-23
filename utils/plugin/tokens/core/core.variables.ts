@@ -24,5 +24,4 @@ export const CORE_VARIABLES = {
   'radius-4': 'calc(8px * var(--scaling) * var(--radius-factor))',
   'radius-5': 'calc(12px * var(--scaling) * var(--radius-factor))',
   'radius-6': 'calc(16px * var(--scaling) * var(--radius-factor))',
-  radius: '0.5rem',
 }

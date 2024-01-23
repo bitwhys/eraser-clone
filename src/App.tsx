@@ -1,6 +1,15 @@
+import resolveConfig from 'tailwindcss/resolveConfig'
+import config from '../tailwind.config.ts'
 import Header from '@/layouts/Header.tsx'
 import EmptyWhiteboardState from '@/components/EmptyWhiteboardState.tsx'
-import { Card, CardContent } from '@/components/ui/card.tsx'
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card.tsx'
+
+const fullConfig = resolveConfig(config)
 
 function App() {
   return (
