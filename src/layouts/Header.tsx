@@ -2,6 +2,8 @@ import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { cn } from '@/lib/utils.ts'
+import { DotsHorizontalIcon } from '@radix-ui/react-icons'
+import { Button } from '@/components/ui/button.tsx'
 
 const user = {
   name: 'Tom Cook',
@@ -10,8 +12,8 @@ const user = {
 }
 const navigation = [
   { name: 'Notepad', href: '#', current: false },
-  { name: 'Both', href: '#', current: false },
-  { name: 'Whiteboard', href: '#', current: true },
+  { name: 'Both', href: '#', current: true },
+  { name: 'Whiteboard', href: '#', current: false },
 ]
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
@@ -22,10 +24,7 @@ const userNavigation = [
 const Header = () => {
   const [title, setTitle] = useState('👋 Getting Started on Eraser')
   return (
-    <Disclosure
-      as="nav"
-      className="border-b border-[--sand-6] bg-[--white-a12]"
-    >
+    <Disclosure as="nav" className="shadow-sm bg-[--white-a12]">
       {({ open }) => (
         <>
           <div className="px-4 sm:px-6 lg:px-8">
@@ -55,18 +54,9 @@ const Header = () => {
                     {title}
                   </div>
                 </div>
-                <svg
-                  className="size-6 text-zinc-500"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 256 256"
-                >
-                  <path
-                    d="M152,128a24,24,0,1,1-24-24A24,24,0,0,1,152,128ZM48,104a24,24,0,1,0,24,24A24,24,0,0,0,48,104Zm160,0a24,24,0,1,0,24,24A24,24,0,0,0,208,104Z"
-                    opacity="0.2"
-                  ></path>
-                  <path d="M128,96a32,32,0,1,0,32,32A32,32,0,0,0,128,96Zm0,48a16,16,0,1,1,16-16A16,16,0,0,1,128,144ZM48,96a32,32,0,1,0,32,32A32,32,0,0,0,48,96Zm0,48a16,16,0,1,1,16-16A16,16,0,0,1,48,144ZM208,96a32,32,0,1,0,32,32A32,32,0,0,0,208,96Zm0,48a16,16,0,1,1,16-16A16,16,0,0,1,208,144Z"></path>
-                </svg>
+                <Button size="icon" variant="ghost" className="hover:bg-grey-3">
+                  <DotsHorizontalIcon className="size-6 text-grey-10" />
+                </Button>
               </div>
               <div className="hidden sm:flex sm:justify-center">
                 <div className="flex gap-x-8">
@@ -119,7 +109,7 @@ const Header = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white-a12 py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
