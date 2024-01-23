@@ -30,11 +30,44 @@ type PluginWithOptionsThemeCreator = (
   options: PluginOptions
 ) => Parameters<typeof plugin>[1]
 const pluginCreator: PluginWithOptionsCreator = (options) => {
-  const { prefix } = options
+  const { scaling = 1, radius = 'medium' } = options
+  let radiusFactor: string
+  let radiusFull: string
+
+  switch (radius) {
+    case 'none':
+      radiusFactor = '0'
+      radiusFull = '1'
+      break
+    case 'small':
+      radiusFactor = '0.75'
+      radiusFull = '0px'
+      break
+    case 'medium':
+      radiusFactor = '1'
+      radiusFull = '0px'
+      break
+    case 'large':
+      radiusFactor = '1.5'
+      radiusFull = '0px'
+      break
+    case 'full':
+      radiusFactor = '1.5'
+      radiusFull = '9999px'
+      break
+    default:
+      radiusFactor = '1'
+      radiusFull = '0px'
+  }
   return ({ addBase }) => {
     addBase([
       {
-        ':root': mapKeys(CORE_VARIABLES, (_, k) => `--${k}`),
+        ':root': {
+          '--scaling': `${scaling}`,
+          '--radius-factor': `${radiusFactor}`,
+          '--radius-full': `${radiusFull}`,
+          ...mapKeys(CORE_VARIABLES, (_, k) => `--${k}`),
+        },
         '*': {
           borderColor: 'theme(colors.border)',
         },

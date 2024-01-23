@@ -7,5 +7,10 @@ export default {
   content: ['index.html', './src/**/*.{ts,tsx}'],
   prefix: '',
   theme: {},
-  plugins: [tailwindcssAnimate, defineTheme({})],
+  plugins: [
+    tailwindcssAnimate,
+    defineTheme({
+      radius: 'large',
+    }),
+  ],
 } satisfies Config
