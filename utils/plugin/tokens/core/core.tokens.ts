@@ -1,4 +1,4 @@
-export const CORE_VARIABLES = {
+export const CORE_TOKENS = {
   background: '0 0% 100%',
   foreground: '222.2 84% 4.9%',
   card: '0 0% 100%',
@@ -18,10 +18,4 @@ export const CORE_VARIABLES = {
   border: '214.3 31.8% 91.4%',
   input: '214.3 31.8% 91.4%',
   ring: '222.2 84% 4.9%',
-  'radius-1': 'calc(3px * var(--scaling) * var(--radius-factor))',
-  'radius-2': 'calc(4px * var(--scaling) * var(--radius-factor))',
-  'radius-3': 'calc(6px * var(--scaling) * var(--radius-factor))',
-  'radius-4': 'calc(8px * var(--scaling) * var(--radius-factor))',
-  'radius-5': 'calc(12px * var(--scaling) * var(--radius-factor))',
-  'radius-6': 'calc(16px * var(--scaling) * var(--radius-factor))',
 }
