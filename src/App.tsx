@@ -1,5 +1,6 @@
 import Header from '@/layouts/Header.tsx'
 import EmptyWhiteboardState from '@/components/EmptyWhiteboardState.tsx'
+import { Card, CardContent } from '@/components/ui/card.tsx'
 
 function App() {
   return (
@@ -13,9 +14,7 @@ function App() {
             id="grid-pattern"
             className="absolute inset-0 -z-10 bg-[url('/pattern.png')] [background-position:-2px_-2px] [background-size:10px_10px]"
           />
-          <div className="mx-auto max-w-md rounded-xl bg-[--white-a12] p-6 shadow">
-            <EmptyWhiteboardState />
-          </div>
+          <EmptyWhiteboardState />
         </div>
       </div>
     </div>
