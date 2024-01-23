@@ -1,6 +1,6 @@
 import plugin from 'tailwindcss/plugin'
 import mapKeys from 'lodash.mapkeys'
-import { CORE_VARIABLES } from './tokens/core/core.variables.ts'
+import { CORE_TOKENS } from './tokens/core/core.tokens.ts'
 import { CONFIG_COLORS } from './tokens/config/config.colors.ts'
 import { CONFIG_RADIUS } from './tokens/config/config.radius.ts'
 import { CONFIG_FONTS } from './tokens/config/config.fonts.ts'
@@ -21,7 +21,7 @@ export type PluginOptions = {
   radius?: 'none' | 'small' | 'medium' | 'large' | 'full'
   scaling?: 0.9 | 0.95 | 1 | 1.05 | 1.1
   prefix?: string
-  overrides?: Partial<typeof CORE_VARIABLES>
+  overrides?: Partial<typeof CORE_TOKENS>
 }
 
 type PluginWithOptionsCreator = (
@@ -70,7 +70,7 @@ const pluginCreator: PluginWithOptionsCreator = (options) => {
           '--scaling': `${scaling}`,
           '--radius-factor': `${radiusFactor}`,
           '--radius-full': `${radiusFull}`,
-          ...mapKeys(CORE_VARIABLES, (_, k) => `--${k}`),
+          ...mapKeys(CORE_TOKENS, (_, k) => `--${k}`),
           ...mapKeys(CORE_SHADOWS, (_, k) => `--${k}`),
           ...mapKeys(light, (_, k) => `--grey-${format(k)}`),
           ...mapKeys(alpha, (_, k) => `--grey-a${format(k)}`),
