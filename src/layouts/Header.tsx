@@ -54,9 +54,7 @@ const Header = () => {
                     {title}
                   </div>
                 </div>
-                <Button size="icon" variant="ghost" className="hover:bg-grey-3">
-                  <DotsHorizontalIcon className="size-6 text-grey-10" />
-                </Button>
+                <DotsHorizontalIcon className="size-6 text-grey-10 cursor-pointer" />
               </div>
               <div className="hidden sm:flex sm:justify-center">
                 <div className="flex gap-x-8">

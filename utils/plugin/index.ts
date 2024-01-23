@@ -48,7 +48,12 @@ const pluginCreator: PluginWithOptionsCreator = (options) => {
   let radiusFactor: string
   let radiusFull: string
 
-  const { light: greyBase, alpha: greyAlpha } = getRadixColors(grey)
+  const {
+    light: greyBase,
+    alpha: greyAlpha,
+    dark: inverseBase,
+    darkAlpha: inverseAlpha,
+  } = getRadixColors(grey)
   const { light: primaryBase, alpha: primaryAlpha } = getRadixColors(primary)
 
   switch (radius) {
@@ -90,6 +95,8 @@ const pluginCreator: PluginWithOptionsCreator = (options) => {
           ),
           ...mapKeys(greyBase, (_, k) => `--grey-${format(k)}`),
           ...mapKeys(greyAlpha, (_, k) => `--grey-a${format(k)}`),
+          ...mapKeys(inverseBase, (_, k) => `--inverse-${format(k)}`),
+          ...mapKeys(inverseAlpha, (_, k) => `--inverse-a${format(k)}`),
           ...mapKeys(primaryBase, (_, k) => `--primary-${format(k)}`),
           ...mapKeys(primaryAlpha, (_, k) => `--primary-a${format(k)}`),
         },
