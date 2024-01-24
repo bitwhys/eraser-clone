@@ -1,0 +1,27 @@
+{
+  "name": "@bitwhys/plugin",
+  "version": "0.0.0",
+  "description": "TailwindCSS Plugin",
+  "types": "./src/index.ts",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "chroma-js": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/chroma-js": "^2.4.3",
+    "@types/lodash.mapvalues": "^4.6.9",
+    "@types/lodash.mapkeys": "^4.6.9",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-animate": "^1.0.7",
+    "@radix-ui/colors": "^3.0.0",
+    "typescript": "^5.3.3",
+    "lodash.mapkeys": "^4.6.0",
+    "lodash.mapvalues": "^4.6.0"
+  }
+}

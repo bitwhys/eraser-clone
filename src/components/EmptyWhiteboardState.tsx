@@ -83,11 +83,9 @@ const EmptyWhiteboardState = ({}: EmptyWhiteboardStateProps) => {
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
+            <Button type="button">Close</Button>
           </DialogClose>
-          <Button>Select a file</Button>
+          <Button variant="primary">Select a file</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

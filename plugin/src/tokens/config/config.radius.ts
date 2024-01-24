@@ -1,5 +1,5 @@
 export const CONFIG_RADIUS = {
-  DEFAULT: 'var(--radius-2)',
+  DEFAULT: 'max(var(--radius-2),var(--radius-full))',
   sm: 'max(var(--radius-1),var(--radius-full))',
   md: 'max(var(--radius-2),var(--radius-full))',
   lg: 'max(var(--radius-3),var(--radius-full))',

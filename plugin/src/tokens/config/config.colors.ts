@@ -1,9 +1,5 @@
 export const CONFIG_COLORS = {
-  border: 'var(--border)',
-  input: 'var(--input)',
-  ring: 'var(--ring)',
   background: 'var(--background)',
-  foreground: 'var(--foreground)',
   primary: {
     DEFAULT: 'var(--primary)',
     foreground: 'var(--primary-foreground)',
@@ -135,8 +131,5 @@ export const CONFIG_COLORS = {
     a10: 'var(--inverse-a10)',
     a11: 'var(--inverse-a11)',
     a12: 'var(--inverse-a12)',
-  },
-  borderColor: {
-    DEFAULT: 'var(--border)',
   },
 }

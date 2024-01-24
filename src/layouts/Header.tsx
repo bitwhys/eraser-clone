@@ -3,7 +3,6 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { cn } from '@/lib/utils.ts'
 import { DotsHorizontalIcon } from '@radix-ui/react-icons'
-import { Button } from '@/components/ui/button.tsx'
 
 const user = {
   name: 'Tom Cook',

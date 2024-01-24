@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-import { defineTheme } from './utils/plugin'
+import { defineTheme } from './plugin'
 import tailwindcssAnimate from 'tailwindcss-animate'
 
 export default {
@@ -11,14 +11,11 @@ export default {
       colors: {
         canvas: 'var(--grey-2)',
       },
+      ringColor: {
+        DEFAULT: 'var(--grey-a4)',
+        ring: 'var(--grey-6)',
+      },
     },
   },
-  plugins: [
-    tailwindcssAnimate,
-    defineTheme({
-      radius: 'large',
-      grey: 'sand',
-      primary: 'orange',
-    }),
-  ],
+  plugins: [tailwindcssAnimate, defineTheme({})],
 } satisfies Config
